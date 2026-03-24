@@ -1,8 +1,19 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.List;
 
+public class Main {
+    public static void main(String[] args) {
+
+        String input = "x = sin(3.14) + cos(0) * 10";
+
+        Lexer lexer = new Lexer(input);
+        List<Token> tokens = lexer.tokenize();
+
+        System.out.println("Input:");
+        System.out.println(input);
+
+        System.out.println("\nTokens:");
+        for (Token t : tokens) {
+            System.out.println(t);
+        }
+    }
 }
