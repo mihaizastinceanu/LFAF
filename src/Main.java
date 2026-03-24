@@ -1,24 +1,22 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 public class Main {
     public static void main(String[] args) {
-        Grammar grammar = new Grammar();
-        System.out.println("Generated strings:");
 
-        for(int i = 0; i < 5; ++i) {
-            System.out.println(grammar.generateString());
-        }
+        FiniteAutomaton fa = new FiniteAutomaton();
 
-        FiniteAutomaton fa = grammar.toFiniteAutomaton();
-        String[] tests = new String[]{"db", "dab", "daab", "bdab", "bdcba", "abc", "dd"};
-        System.out.println("\nTesting:");
+        // 🔍 Determinism
+        System.out.println("Is DFA? " + fa.isDeterministic());
 
-        for(String s : tests) {
-            System.out.println(s + " -> " + fa.stringBelongToLanguage(s));
-        }
+        // 🔄 FA → Grammar
+        Grammar grammar = fa.toGrammar();
 
+        System.out.println("\nGenerated Grammar:");
+        grammar.printProductions();
+
+        System.out.println("\nGrammar Type:");
+        System.out.println(grammar.classifyGrammar());
+
+        // 🔄 NDFA → DFA
+        System.out.println("\nNDFA → DFA Conversion:");
+        DFAConverter.convertToDFA(fa);
     }
 }
