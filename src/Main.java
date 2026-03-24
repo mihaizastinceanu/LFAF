@@ -1,8 +1,22 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
 
+        FiniteAutomaton fa = new FiniteAutomaton();
+
+        // 🔍 Determinism
+        System.out.println("Is DFA? " + fa.isDeterministic());
+
+        // 🔄 FA → Grammar
+        Grammar grammar = fa.toGrammar();
+
+        System.out.println("\nGenerated Grammar:");
+        grammar.printProductions();
+
+        System.out.println("\nGrammar Type:");
+        System.out.println(grammar.classifyGrammar());
+
+        // 🔄 NDFA → DFA
+        System.out.println("\nNDFA → DFA Conversion:");
+        DFAConverter.convertToDFA(fa);
+    }
 }
