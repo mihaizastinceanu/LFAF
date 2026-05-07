@@ -1,8 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
+public class Main {
+    public static void main(String[] args) {
+        Grammar grammar = new Grammar();
+        System.out.println("Generated strings:");
+
+        for(int i = 0; i < 5; ++i) {
+            System.out.println(grammar.generateString());
+        }
+
+        FiniteAutomaton fa = grammar.toFiniteAutomaton();
+        String[] tests = new String[]{"db", "dab", "daab", "bdab", "bdcba", "abc", "dd"};
+        System.out.println("\nTesting:");
+
+        for(String s : tests) {
+            System.out.println(s + " -> " + fa.stringBelongToLanguage(s));
+        }
+
+    }
 }
